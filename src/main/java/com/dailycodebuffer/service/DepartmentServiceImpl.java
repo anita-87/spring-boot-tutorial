@@ -22,4 +22,9 @@ public class DepartmentServiceImpl implements DepartmentService{
     public Department saveDepartment(Department department) {
         return departmentRepository.save(department);
     }
+
+    @Override
+    public Department fetchDepartmentById(Long departmentId) {
+        return departmentRepository.findById(departmentId).get();
+    }
 }
