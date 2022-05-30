@@ -1,5 +1,14 @@
+server:
+  port: '8082'
+
+spring:
+  profiles:
+    active: qa
+---
+
 spring:
   datasource:
+    profiles: dev
     username: root
     url: jdbc:mysql://localhost:3306/dcbapp
     password: password
@@ -9,5 +18,32 @@ spring:
     show-sql: 'true'
 welcome:
   message: Welcome to Daily Code Buffer!!
-server:
-  port: '8082'
+
+---
+spring:
+  datasource:
+    profiles: qa
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp-qa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Welcome to Daily Code Buffer!!
+
+---
+
+  spring:
+    datasource:
+      profiles: prod
+      username: root
+      url: jdbc:mysql://localhost:3306/dcbapp-pro
+      password: password
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: 'true'
+  welcome:
+    message: Welcome to Daily Code Buffer!!
